@@ -13,7 +13,7 @@ module  Body
           if @json[:event][:subtype] != "bot_message" #これがないと無限ループになる
             body = {
                       :token => ENV['BOT_USER_ACCESS_TOKEN'],#あとでherokuで設定します
-                      :channel => @json[:event][:channel],#こうするとDM内に返信できます
+                      :channel => '#botテスト',#こうするとDM内に返信できます
                       :text  => "こんにちは、私はslackbotです！"
                     }
             conn.post '/api/chat.postMessage',body.to_json,
