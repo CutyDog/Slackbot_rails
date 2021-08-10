@@ -12,12 +12,13 @@ module  Body
                 builder.adapter Faraday::Adapter::NetHttp     # Net/HTTP をアダプターに使う
             end
 
-            message = "レムは知っています！"
+            message_agree = "レムもそう思います！"
+            message_greet = "こんにちわ！レムは元気です！"
 
-            if @json[:event][:type] != "bot_message" #これがないと無限ループになる
+            if @json[:event].has_key?(:bot_id) #これがないと無限ループになる
             body = {token: ENV['BOT_USER_ACCESS_TOKEN'],
                     channel: 'botテスト',
-                    text: message}
+                    text: message_agree}
             conn.post '/api/chat.postMessage',body.to_json,
                 {"Content-type" => 'application/json',
                  "Authorization"=>"Bearer #{ENV['BOT_USER_ACCESS_TOKEN']}"}
