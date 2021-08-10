@@ -3,4 +3,7 @@ Rails.application.routes.draw do
   get "hello", to: 'application#hello'
   get "name", to: 'application#name'
   get "love", to: 'application#love'
+
+  get "/"=>"slack#index"
+  post "/receive"=>"slack#create"
 end
