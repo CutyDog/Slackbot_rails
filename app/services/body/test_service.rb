@@ -12,7 +12,7 @@ module  Body
                 builder.adapter Faraday::Adapter::NetHttp     # Net/HTTP をアダプターに使う
             end
             if @json[:event][:subtype] != "bot_message" #これがないと無限ループになる
-            body = {token: ENV['BOT_USER_ACCESS_TOKEN'], channel: '#botテスト', type: "bot_message" text: "こんにちは、私はslackbotです！"}
+            body = {token: ENV['BOT_USER_ACCESS_TOKEN'], channel: '#botテスト', type: "bot_message", text: "こんにちは、私はslackbotです！"}
             conn.post '/api/chat.postMessage',body.to_json,
                 {"Content-type" => 'application/json',"Authorization"=>"Bearer #{ENV['BOT_USER_ACCESS_TOKEN']}"}
                 #ヘッダーはつけなければいけないらしい、このままで大丈夫です。
