@@ -11,10 +11,13 @@ module  Body
                 builder.use Faraday::Response::Logger     # リクエストを標準出力に出力する
                 builder.adapter Faraday::Adapter::NetHttp     # Net/HTTP をアダプターに使う
             end
-            if @json[:event][:bot_profile][:name] != "レムBot" #これがないと無限ループになる
+
+            message = "レムは知っています！"
+
+            if @json[:event][:type] != "bot_message" #これがないと無限ループになる
             body = {token: ENV['BOT_USER_ACCESS_TOKEN'],
                     channel: 'botテスト',
-                    text: "こんにちは、私はslackbotです！"}
+                    text: message}
             conn.post '/api/chat.postMessage',body.to_json,
                 {"Content-type" => 'application/json',
                  "Authorization"=>"Bearer #{ENV['BOT_USER_ACCESS_TOKEN']}"}
