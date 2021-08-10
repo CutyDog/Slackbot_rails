@@ -6,7 +6,7 @@ module  Body
         end
         def execute
             #Faradayを使って、JSON形式のファイルをPOSTできるようにする
-            conn = Faraday::Connection.new(:url => 'https://.slack.com') do |builder|
+            conn = Faraday::Connection.new(:url => 'https://my-men.slack.com') do |builder|
                 builder.use Faraday::Request::UrlEncoded  # リクエストパラメータを URL エンコードする
                 builder.use Faraday::Response::Logger     # リクエストを標準出力に出力する
                 builder.adapter Faraday::Adapter::NetHttp     # Net/HTTP をアダプターに使う
