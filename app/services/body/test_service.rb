@@ -13,7 +13,7 @@ module  Body
             end
             if @json[:event][:bot_profile][:name] != "レムBot" #これがないと無限ループになる
             body = {token: ENV['BOT_USER_ACCESS_TOKEN'],
-                    channel: @json[:event][:channel],
+                    channel: 'botテスト',
                     text: "こんにちは、私はslackbotです！"}
             conn.post '/api/chat.postMessage',body.to_json,
                 {"Content-type" => 'application/json',
