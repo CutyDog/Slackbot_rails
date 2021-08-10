@@ -15,7 +15,7 @@ module  Body
             message_agree = "レムもそう思います！"
             message_greet = "こんにちわ！レムは元気です！"
 
-            if @json[:event].has_key?(:bot_id) #これがないと無限ループになる
+            if @json[:event].has_key?(:client_msg_id) #これがないと無限ループになる
             body = {token: ENV['BOT_USER_ACCESS_TOKEN'],
                     channel: 'botテスト',
                     text: message_agree}
