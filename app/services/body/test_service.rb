@@ -12,16 +12,16 @@ module  Body
                 builder.adapter Faraday::Adapter::NetHttp     # Net/HTTP をアダプターに使う
             end
 
-            message_agree = "レムもそう思います！"
-            message_greet = "こんにちわ！レムは元気です！"
 
             if @json[:event].has_key?(:client_msg_id) #これがないと無限ループになる
                 user = @json[:event][:user]
-                messages => {"message_taihsi"=>"大志くん、レムもそう思います！", "message_zeze"=>"勇汰くん、さすがです！！",
-                "message_ryota"=>"亮太くん、ちょっと何言ってるか分かんないです", "message_daichi"=>"Shut up.\n Don't open your dirty mouth!!"}
+                message = "レムもそう思います！"
+                message = "大志くん、レムもそう思います！" if user=="U025DPJ1VB6"
+                # message = "勇汰くん、さすがです！！"
+                # message = "message_ryota"=>"亮太くん、ちょっと何言ってるか分かんないです"
+                # message = "message_daichi"=>"Shut up.\n Don't open your dirty mouth!!"
                 
-                message = (user=="U025DPJ1VB6" ? messages[:message_taishi] : message_agree)
-
+                
                 body = {token: ENV['BOT_USER_ACCESS_TOKEN'],
                         channel: 'botテスト',
                         text: message}
