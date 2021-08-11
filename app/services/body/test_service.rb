@@ -21,9 +21,9 @@ module  Body
                 # message = "message_ryota"=>"亮太くん、ちょっと何言ってるか分かんないです"
                 # message = "message_daichi"=>"Shut up.\n Don't open your dirty mouth!!"
                 
-                
+
                 body = {token: ENV['BOT_USER_ACCESS_TOKEN'],
-                        channel: 'botテスト',
+                        channel: 'レムちゃんねる',
                         text: message}
                 conn.post '/api/chat.postMessage',body.to_json,
                     {"Content-type" => 'application/json',
