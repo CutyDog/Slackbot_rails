@@ -19,8 +19,8 @@ module  Body
                 user = @json[:event][:user]
                 messages = {message_taihsi: "大志くん、レムもそう思います！", message_zeze: "勇汰くん、さすがです！！",
                 message_ryota: "亮太くん、ちょっと何言ってるか分かんないです", message_daichi: "Shut up.\n Don't open your dirty mouth!!"}
-
-                message = (user=="U02AR9TTRKN" ? messages[:message_taishi] : message_agree)
+                
+                message = (user=="U025DPJ1VB6" ? messages[:message_taishi] : message_agree)
 
                 body = {token: ENV['BOT_USER_ACCESS_TOKEN'],
                         channel: 'botテスト',
