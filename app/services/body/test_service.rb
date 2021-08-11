@@ -14,7 +14,7 @@ module  Body
 
 
             if @json[:event].has_key?(:client_msg_id) #これがないと無限ループになる
-                if @json[:event][:text]include?("<@U02AR9TTRKN>") #メンションの時だけ呼び出す
+                if @json[:event][:text].include?("<@U02AR9TTRKN>") #メンションの時だけ呼び出す
                     user = @json[:event][:user]
                     message = "レムもそう思います！"
                     message = "大志くん、レムもそう思います！" if user=="U025DPJ1VB6"
