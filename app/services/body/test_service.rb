@@ -14,21 +14,23 @@ module  Body
 
 
             if @json[:event].has_key?(:client_msg_id) #これがないと無限ループになる
-                user = @json[:event][:user]
-                message = "レムもそう思います！"
-                message = "大志くん、レムもそう思います！" if user=="U025DPJ1VB6"
-                # message = "勇汰くん、さすがです！！"
-                # message = "message_ryota"=>"亮太くん、ちょっと何言ってるか分かんないです"
-                # message = "message_daichi"=>"Shut up.\n Don't open your dirty mouth!!"
-                
+                if @json[:event][:text]include?("<@U02AR9TTRKN>") #メンションの時だけ呼び出す
+                    user = @json[:event][:user]
+                    message = "レムもそう思います！"
+                    message = "大志くん、レムもそう思います！" if user=="U025DPJ1VB6"
+                    # message = "勇汰くん、さすがです！！"
+                    # message = "message_ryota"=>"亮太くん、ちょっと何言ってるか分かんないです"
+                    # message = "message_daichi"=>"Shut up.\n Don't open your dirty mouth!!"
+                    
 
-                body = {token: ENV['BOT_USER_ACCESS_TOKEN'],
-                        channel: 'レムちゃんねる',
-                        text: message}
-                conn.post '/api/chat.postMessage',body.to_json,
-                    {"Content-type" => 'application/json',
-                    "Authorization"=>"Bearer #{ENV['BOT_USER_ACCESS_TOKEN']}"}
-                    #ヘッダーはつけなければいけないらしい、このままで大丈夫です。
+                    body = {token: ENV['BOT_USER_ACCESS_TOKEN'],
+                            channel: 'レムちゃんねる',
+                            text: message}
+                    conn.post '/api/chat.postMessage',body.to_json,
+                        {"Content-type" => 'application/json',
+                        "Authorization"=>"Bearer #{ENV['BOT_USER_ACCESS_TOKEN']}"}
+                        #ヘッダーはつけなければいけないらしい、このままで大丈夫です。
+                end
             end
         end
     end 
