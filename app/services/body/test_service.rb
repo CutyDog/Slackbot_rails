@@ -16,9 +16,15 @@ module  Body
             message_greet = "こんにちわ！レムは元気です！"
 
             if @json[:event].has_key?(:client_msg_id) #これがないと無限ループになる
+                user = @json[:event][:user]
+                messages = {message_taihsi: "大志くん、レムもそう思います！", message_zeze: "勇汰くん、さすがです！！",
+                message_ryota: "亮太くん、ちょっと何言ってるか分かんないです", message_daichi, "Shut up.\n Don't open your dirty mouth!!"}
+
+                message = (user=="U02AR9TTRKN" ? messages[:message_taishi] : message_agree)
+
                 body = {token: ENV['BOT_USER_ACCESS_TOKEN'],
                         channel: 'botテスト',
-                        text: message_agree}
+                        text: message}
                 conn.post '/api/chat.postMessage',body.to_json,
                     {"Content-type" => 'application/json',
                     "Authorization"=>"Bearer #{ENV['BOT_USER_ACCESS_TOKEN']}"}
