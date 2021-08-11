@@ -16,13 +16,13 @@ module  Body
             message_greet = "こんにちわ！レムは元気です！"
 
             if @json[:event].has_key?(:client_msg_id) #これがないと無限ループになる
-            body = {token: ENV['BOT_USER_ACCESS_TOKEN'],
-                    channel: 'botテスト',
-                    text: message_agree}
-            conn.post '/api/chat.postMessage',body.to_json,
-                {"Content-type" => 'application/json',
-                 "Authorization"=>"Bearer #{ENV['BOT_USER_ACCESS_TOKEN']}"}
-                #ヘッダーはつけなければいけないらしい、このままで大丈夫です。
+                body = {token: ENV['BOT_USER_ACCESS_TOKEN'],
+                        channel: 'botテスト',
+                        text: message_agree}
+                conn.post '/api/chat.postMessage',body.to_json,
+                    {"Content-type" => 'application/json',
+                    "Authorization"=>"Bearer #{ENV['BOT_USER_ACCESS_TOKEN']}"}
+                    #ヘッダーはつけなければいけないらしい、このままで大丈夫です。
             end
         end
     end 
