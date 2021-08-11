@@ -19,8 +19,8 @@ module  Body
                     message = "レムもそう思います！"
                     message = "大志くん、レムもそう思います！" if user=="U025DPJ1VB6"
                     # message = "勇汰くん、さすがです！！"
-                    # message = "message_ryota"=>"亮太くん、ちょっと何言ってるか分かんないです"
-                    # message = "message_daichi"=>"Shut up.\n Don't open your dirty mouth!!"
+                    message = "亮太くん、ちょっと何言ってるか分かんないです" if user=="U025L7P45Q9"
+                    # message = "Shut up.\n Don't open your dirty mouth!!"
                     
 
                     body = {token: ENV['BOT_USER_ACCESS_TOKEN'],

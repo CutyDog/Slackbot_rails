@@ -1,25 +1,16 @@
 class SlackController < ApplicationController
 
     def index
+        @lem_announces = { "レム名言集" =>
+                         { one: "ここから始めましょう\nイチからーー\nいいえ、ゼロから！",
+                           two: "姉様姉様。\nどうやら少し混乱されているみたいですお客様",
+                           three: "鬼がかってますね！",
+                           four: "穀潰しの発言ですよ。\n聞きましたか姉様？",
+                           five: "言質、取りました！\nもう引っ込められませんよ♪" } }
+        render json: @lem_announces
     end
 
     def create
-        # # RTM Clientのインスタンス生成
-        # client = Slack::RealTime::Client.new
-
-        # # ユーザからのメッセージを検知したときの処理
-        # client.on :message do |data|
-        #     if data['text'].include?('こんにちは')
-        #     client.message channel: data['channel'], text: "Hi!"
-        #     end
-        #     if data['text'].include?('かしこい') || data['text'].include?('えらい')
-        #     client.message channel: data['channel'], text: "Thank you!"
-        #     end
-        #     if data['text'].include?('おやすみ')
-        #     client.message channel: data['channel'], text: "Good night"
-        #     end
-        # end
-
         json_hash  = params[:slack]
         Body::TestService.new(json_hash).execute
 
