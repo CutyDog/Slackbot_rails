@@ -16,10 +16,13 @@ module  Body
             if @json[:event].has_key?(:client_msg_id) #これがないと無限ループになる
                 if @json[:event][:text].include?("<@U02AR9TTRKN>") #メンションの時だけ呼び出す
                     user = @json[:event][:user]
+                    words = ["、レムもそう思います！", "、鬼がかってますね！", "、さすがです！", "、ちょっと何言ってるか分かんないです",
+                    "、レムには難しいです:sweat_drops:", "はレムのヒーローです:ピカピカ:", "、:ダボハゼ::ダボハゼ::ダボハゼ:"]
+                    w = words[rand(7)]
                     message = "レムもそう思います！"
-                    message = "大志くん、レムもそう思います！" if user=="U025DPJ1VB6"
-                    # message = "勇汰くん、さすがです！！"
-                    message = "亮太くん、ちょっと何言ってるか分かんないです" if user=="U025L7P45Q9"
+                    message = "大志くん#{w}" if user=="U025DPJ1VB6"
+                    message = "勇汰くん#{w}" if user=="U02583J9FPU"
+                    message = "亮太くん#{w}" if user=="U025L7P45Q9"
                     # message = "Shut up.\n Don't open your dirty mouth!!"
                     
 
