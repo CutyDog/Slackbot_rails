@@ -33,6 +33,7 @@ module  Body
                         {"Content-type" => 'application/json',
                         "Authorization"=>"Bearer #{ENV['BOT_USER_ACCESS_TOKEN']}"}
                         #ヘッダーはつけなければいけないらしい、このままで大丈夫です。
+                    exit
                 end
             end
         end
