@@ -34,9 +34,9 @@ task :send_photo => :environment do
     client = Slack::Web::Client.new
     client.files_upload(
         channels: '#botテスト',
-        file: Faraday::UploadIO.new('/images/lemu', 'image/jpeg'),
-        title: 'My Avatar',
+        file: Faraday::UploadIO.new('public/images/lemu/lemu_1.jpg', 'image/jpeg'),
+        title: 'レム',
         filename: 'lemu_1.jpg',
-        initial_comment: 'Attached a selfie.'
+        initial_comment: '写真アップ'
     )
 end
