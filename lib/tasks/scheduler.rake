@@ -7,7 +7,7 @@ conn = Faraday::Connection.new(:url => 'https://my-men.slack.com') do |builder|
     builder.use Faraday::Response::Logger     # リクエストを標準出力に出力する
     builder.adapter Faraday::Adapter::NetHttp     # Net/HTTP をアダプターに使う
 end
-channel = 'レムちゃんねる'
+channel = 'C02AK8N5PD1'
 token = ENV['BOT_USER_ACCESS_TOKEN']
 con_type = 'application/json'
 auth = "Bearer #{ENV['BOT_USER_ACCESS_TOKEN']}"
