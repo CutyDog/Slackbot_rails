@@ -15,6 +15,7 @@ module  Body
 
             if @json[:event].has_key?(:client_msg_id) #これがないと無限ループになる
                 if @json[:event][:text].include?("<@U02AR9TTRKN>") #メンションの時だけ呼び出す
+                    channel = @json[:event][:channel]
                     user = @json[:event][:user]
                     words = ["、レムもそう思います！", "、鬼がかってますね！", "、さすがです！", "、ちょっと何言ってるか分かんないです:raised_hands:",
                     "、レムには難しいです:sweat_drops:", "はレムのヒーローです:sparkles:", "、天才です！"]
@@ -32,7 +33,7 @@ module  Body
                     
 
                     body = {token: ENV['BOT_USER_ACCESS_TOKEN'],
-                            channel: 'レムちゃんねる',
+                            channel: channel,
                             text: message}
                     conn.post '/api/chat.postMessage',body.to_json,
                         {"Content-type" => 'application/json',
